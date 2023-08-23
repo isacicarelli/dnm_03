@@ -27,23 +27,22 @@
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            var hh = new Date().getHours();
-            var mm = new Date().getMinutes();
-            document.querySelector("#horas").innerHTML = hh + ":" + mm;
-                function preload() {
-                data = loadJSON("https://taylorswiftapi.onrender.com/get");
-            }
+            // Guardo en la variable lo que me entregue la API de Taylor Swift
+             // En estricto rigor, debería crear un swiftie.js para las variables, pero se me hizo más fácil y rápido así :)
+            function preload() {
+             data = loadJSON("https://taylorswiftapi.onrender.com/get");
+                        }
             function setup() {
-                noCanvas();
-                createP(data.quote + "("data.song +") + ("data.album +") "<span> —Taylor Swift</span>").parent("texto");
-            }
-            function setup() {
-                noCanvas();
-                select("#horas").html("hh");
-                select("#minutos").html("mm");
-                select("#cancion").html("data.song");
-                select("#disco").html("data.album");                
-                select("#letra").html("data.quote");
+            // Variable a utilizar
+            var hora_actual = new Date();
+            var horas = hora_actual.getHours();
+            var minutos = hora_actual.getMinutes();
+            noCanvas();
+            select("#horas").html(horas);
+            select("#minutos").html(minutos);
+            select("#cancion").html(data.song);
+            select("#disco").html(data.album);                
+            select("#letra").html(data.quote);
             }
         </script>
     </body>
